@@ -1,0 +1,33 @@
+# Python
+.venv/
+venv/
+__pycache__/
+*.pyc
+
+# Environment variables and secrets
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+
+# Large datasets
+data/*.csv
+data/*.parquet
+data/*.jsonl
+
+# Trained models
+models/*.pkl
+models/*.joblib
+models/*.json
+models/*.ubj
+
+# Jupyter
+.ipynb_checkpoints/
+
+# IDE
+.vscode/
+
+# OS
+.DS_Store
+Thumbs.db
