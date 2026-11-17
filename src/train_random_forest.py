@@ -1,6 +1,6 @@
 
 import pandas as pd
-from floor_features import extract_floor_features
+from prepare_data import load_dataset
 
 from sklearn.base import clone
 from sklearn.model_selection import train_test_split
@@ -12,17 +12,8 @@ from sklearn.ensemble import RandomForestRegressor
 from sklearn.metrics import mean_absolute_error
 from sklearn.inspection import permutation_importance
 
-# 1. Citim datele
-df = pd.read_csv("data/bucharest_apartments_clean_stage1.csv")
-df = extract_floor_features(df)
-
-# 2. Aplicam aceleasi filtre
-df = df[
-    (df["area_sqm"] >= 20) &
-    (df["area_sqm"] <= 200) &
-    (df["price_eur"] >= 20000) &
-    (df["price_eur"] <= 500000)
-].copy()
+# 1-2. Citim datele, aplicam filtrele si eliminam duplicatele
+df = load_dataset()
 
 # 3. Selectam caracteristicile
 numeric_features = [
